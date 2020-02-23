@@ -71,4 +71,4 @@ class WinRate:
             return "+"
 
     def __str__(self):
-        return '{} ({}/{}) ({}{})'.format(self.percentage_text, self.wins, self.total, self.diff_sign, abs(self.diff))
+        return '{} ({}/{})'.format(self.percentage_text, self.wins, self.total)
