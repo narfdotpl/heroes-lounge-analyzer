@@ -1,6 +1,5 @@
-from downloads import get_matches
+from api import *
 
-matches = get_matches(region='eu', season=11, division=4, team_name='Munchies')
-for match in matches:
-    print(match)
-    print()
+
+games = list(get_games('Munchies'))
+print_popular_heroes(games)
