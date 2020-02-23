@@ -1,4 +1,6 @@
-from downloads import get_match_links
+from downloads import get_matches
 
-links = get_match_links(region='eu', season=11, division=4)
-print(next(links))
+matches = get_matches(region='eu', season=11, division=4, team_name='Munchies')
+for match in matches:
+    print(match)
+    print()
