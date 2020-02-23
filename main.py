@@ -1,3 +1,4 @@
-from downloads import get_html
+from downloads import get_match_links
 
-print(get_html('/euseason-11/division-4'))
+links = get_match_links(region='eu', season=11, division=4)
+print(next(links))
