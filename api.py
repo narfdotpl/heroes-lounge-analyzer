@@ -30,11 +30,12 @@ def print_popular_heroes(games: List[FocusedGame]):
         print(f'- {hero}: {win_rate}')
 
 
+def get_heroes(game: FocusedGame) -> Set[str]:
+        return {p.hero for p in game.team.players}
+
+
 def print_compositions(games: List[FocusedGame]):
     print(f'{games[0].team.name}, compositions after {len(games)} games\n')
-
-    def get_heroes(game: FocusedGame) -> Set[str]:
-        return {p.hero for p in game.team.players}
 
     d = defaultdict(lambda: defaultdict(list))
 
@@ -56,3 +57,13 @@ def print_compositions(games: List[FocusedGame]):
             win_rate = WinRate(wins=len([g for g in games if g.did_win]), total=len(games))
             print(f'- {key}: {win_rate}')
         print()
+
+
+def print_games_with_heroes(games: List[FocusedGame], heroes: Set[str]):
+    for game in games:
+        if heroes <= get_heroes(game):
+            msg = f'{game.team.name} vs {game.enemies.name}'
+            if game.did_win:
+                msg += ' (did win)'
+
+            print(msg)
