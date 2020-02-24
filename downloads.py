@@ -92,6 +92,9 @@ def get_match(url: str) -> Optional[Match]:
     games = []
     for pane in doc.cssselect('.tab-pane'):
         rows = pane.cssselect('.row')
+        if not rows:
+            return None
+
         (blue_team_name, red_team_name) = [el.text.strip() for el in rows[0].cssselect('h3 a')]
         (blue_team_players, red_team_players) = [parse_players(el) for el in rows[2].cssselect('.col')]
         blue_team = Team(name=blue_team_name, players=list(blue_team_players))
